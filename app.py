@@ -2,10 +2,10 @@
 this program mentto manage a zoo
 
 """
-
+from icecream import ic
 from enum import Enum
 import json
-
+from helper import print_animals
 
 class Actions (Enum):
     ADD = 1
@@ -22,9 +22,6 @@ def menue():
    
         return Actions(int (input("selection?")))
         
-def print_animals():
-    for animal in animals:
-            print(f'animal name{animal["name"]}age:{animal["age"]}')   
 
 def exit_program():
     with open(DATA_FILES, 'w') as json_file:
@@ -47,7 +44,7 @@ def main():
         elif userselection== Actions.EXIT:
             exit_program() 
         elif userselection== Actions.PRINT:
-             print_animals() 
+             print_animals(animals) 
         else:
             print(" shut up") 
 
