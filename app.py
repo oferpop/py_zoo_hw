@@ -2,15 +2,18 @@
 this program mentto manage a zoo
 
 """
-from icecream import ic
+
 from enum import Enum
 import json
 from helper import print_animals
-
+from helper import   search_animal
+from helper import delete_animal
 class Actions (Enum):
     ADD = 1
     PRINT = 2
     EXIT = 3
+    SEARCH=4
+    DELETE=5
 
 animals=[]
 DATA_FILES='my_list.json'
@@ -34,6 +37,9 @@ def save_data():
         animals = json.load(json_file)
   
         print("make")
+
+
+        
 def main():
     save_data()
 
@@ -45,6 +51,11 @@ def main():
             exit_program() 
         elif userselection== Actions.PRINT:
              print_animals(animals) 
+        elif userselection == Actions.SEARCH:
+            search_animal(animals)
+        elif userselection == Actions.DELETE:
+            delete_animal(animals)    
+            
         else:
             print(" shut up") 
 
